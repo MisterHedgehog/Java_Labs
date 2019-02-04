@@ -3,6 +3,8 @@ package com.lab3;
 import java.util.Formatter;
 import java.util.Scanner;
 
+import static com.support.Manager.fact;
+
 /*              Лабораторная работа №3
 Тема:  Создание линейных программ.
 Задача: Вычислить сумму.
@@ -12,12 +14,6 @@ import java.util.Scanner;
 */
 
 public class ExampleFor {
-    // Функция для определения факториала числа
-    static private int fact(int x) {
-        if (x != 1)
-            return x * fact(x - 1);
-        else return 1;
-    }
 
     public static void main(String[] something) {
         Scanner scanner = new Scanner(System.in);

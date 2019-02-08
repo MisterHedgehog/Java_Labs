@@ -1,4 +1,4 @@
-package com.laba5_6_7.task2;
+package com.laba5.task2;
 
 import java.util.Iterator;
 

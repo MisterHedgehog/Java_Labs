@@ -16,16 +16,18 @@ import static com.support.Manager.fact;
 public class SimpleArray {
     public static void main(String[] something) {
         Scanner scanner = new Scanner(System.in);
-        double sum = 0, znak = -1;
+        double sum = 0, znak = 1;
         System.out.print("Введите размерность массива: ");
-        int n = scanner.nextInt();
+        int fact = 1, n = scanner.nextInt();
         int[] array = new int[n];
         for(int i = 0; i<n; i++){
             System.out.print(">> Введите элемент массива [" + i + "]: ");
             array[i] = scanner.nextInt();
         }
-        for (int i = 0; i < n; i++) {
-            sum += znak * array[i]/fact(i + 1);
+        sum = array[0];
+        for (int i = 1; i < n; i++) {
+            fact *= i;
+            sum += znak * array[i] / fact;
             znak = -znak;
         }
         System.out.print("Результат сложения: " + sum);

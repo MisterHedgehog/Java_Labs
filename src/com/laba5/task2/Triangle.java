@@ -1,4 +1,4 @@
-package com.laba5_6_7.task2;
+package com.laba5.task2;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -83,10 +83,7 @@ public class Triangle implements Iterable<Double> {
 
     @Override
     public String toString() {
-        return "Класс: Треугольник\n" +
-                "сторона=" + side +
-                ", левый угол=" + leftAngle +
-                ", правый угол=" + rightAngle;
+        return "Класс: Треугольник\n" + "сторона=" + side + ", левый угол=" + leftAngle + ", правый угол=" + rightAngle;
     }
 
     // Функция, возвращающий итератор, проходящий по сторонам треугольника.

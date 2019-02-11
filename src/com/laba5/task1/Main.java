@@ -1,5 +1,7 @@
 package com.laba5.task1;
 
+import java.util.ArrayList;
+
 /**              Лабораторная работа №5
  * Вариант: 6
  * Тема:  «Разработка классов и использование их в программах»
@@ -24,5 +26,9 @@ package com.laba5.task1;
 
 public class Main {
     public static void main(String[] something) {
+        Date now = new Date();
+        Resolution resolution = new Resolution();
+        VideoDevice device = new VideoDevice("Sony Max Function", 25, now, resolution, new ArrayList<>());
+        int[] lol;
     }
 }

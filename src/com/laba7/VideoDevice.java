@@ -10,7 +10,7 @@ class VideoDevice {
     Resolution resolution;
     ArrayList<String> films;
 
-   VideoDevice(String model, double weight, Date invention, Resolution resolution, ArrayList<String> films) {
+    VideoDevice(String model, double weight, Date invention, Resolution resolution, ArrayList<String> films) {
         this.model = model;
         this.weight = weight;
         this.invention = invention;
@@ -26,6 +26,14 @@ class VideoDevice {
         this.invention = new Date(0,0,0,"D.M.Y");
     }
 
+    void addWeight(){
+       weight++;
+    }
+
+    void addWeight(int value) {
+        weight += value;
+    }
+
     String getModel() {
         return model;
     }
@@ -34,17 +42,43 @@ class VideoDevice {
         this.model = model;
     }
 
+    void setModel(char... chars){
+        model = String.valueOf(chars);
+    }
+
     boolean hasFilm(String film){
        return films.contains(film);
+    }
+
+    boolean hasFilms(String... films){
+        for (int i = 0; i < films.length; i++) {
+            if(this.films.contains(films[0]))
+                return true;
+        }
+        return false;
     }
 
     void addAllFilms(String... films){
        this.films.addAll(Arrays.asList(films));
     }
 
+    // Функция, выводящая все фильмы
     void showFilms(){
        System.out.println("Список фильмов на устройстве '" + model + "':");
        films.forEach(System.out::println);
+        System.out.println();
+    }
+
+    // Функция, выводящая первые howMach фильмов
+    void showFilms(int howMach){
+        // Если howMach в диапозоне [0; films.size]
+       if(0 <= howMach && howMach <= films.size()){
+           howMach = films.size();
+       }
+        System.out.println("Список фильмов на устройстве '" + model + "':");
+        for (int i = 0; i < howMach; i++) {
+            System.out.println(films.get(i));
+        }
         System.out.println();
     }
 

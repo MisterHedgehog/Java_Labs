@@ -43,9 +43,13 @@ class VideoDevice {
     }
 
     void showFilms(){
+        if(films.isEmpty()) {
+            System.out.println("Список фильмов пуст.");
+            return;
+        }
        System.out.println("Список фильмов на устройстве '" + model + "':");
        films.forEach(System.out::println);
-        System.out.println();
+       System.out.println();
     }
 
     @Override

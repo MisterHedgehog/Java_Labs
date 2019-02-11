@@ -52,9 +52,9 @@ public class Triangle implements Iterable<Double> {
      *  2. Определение площади фигуры
      *  3. Вычисление трёх высот по формуле h = 2S / a, где a - сторона треуольника
      */
-    public double[] getHeights(){
-/* 1. */double leftSide = getLeftSide();
-        double rightSide = getRightSide();
+    public double[] heights(){
+/* 1. */double leftSide = leftSide();
+        double rightSide = rightSide();
 /* 2. */double area = findArea(side, leftSide, rightSide);
 /* 3. */return Stream.of(side, leftSide, rightSide).mapToDouble(i -> 2 * area / i).toArray();
     }
@@ -70,13 +70,13 @@ public class Triangle implements Iterable<Double> {
     }
 
     // Функция, возвращающая значение левой стороны по отношению к известной стороне
-    private double getLeftSide(){
+    private double leftSide(){
         double otherAngle = 180 - rightAngle - leftAngle;
         return side * Math.sin(Math.toRadians(rightAngle))/Math.sin(Math.toRadians(otherAngle));
     }
 
     // Функция, возвращающая значение правой стороны по отношению к известной стороне
-    private double getRightSide(){
+    private double rightSide(){
         double otherAngle = 180 - rightAngle - leftAngle;
         return side * Math.sin(Math.toRadians(leftAngle))/Math.sin(Math.toRadians(otherAngle));
     }
@@ -89,7 +89,7 @@ public class Triangle implements Iterable<Double> {
     // Функция, возвращающий итератор, проходящий по сторонам треугольника.
     @Override
     public Iterator<Double> iterator() {
-        return new SideIterator(side, getLeftSide(), getRightSide());
+        return new SideIterator(side, leftSide(), rightSide());
     }
 
     // Функция, определяющая равенство треугольников по трём сторонам.
@@ -99,9 +99,9 @@ public class Triangle implements Iterable<Double> {
             Triangle other = (Triangle) obj;
             HashSet<Double> sides = new HashSet<>(3,1);
             sides.add(side);
-            sides.add(getLeftSide());
-            sides.add(getRightSide());
-            return !(sides.add(other.side) || sides.add(other.getRightSide()) || sides.add(other.getLeftSide()));
+            sides.add(leftSide());
+            sides.add(rightSide());
+            return !(sides.add(other.side) || sides.add(other.rightSide()) || sides.add(other.leftSide()));
         } catch (Exception e){
             System.out.println(e.getMessage());
         }

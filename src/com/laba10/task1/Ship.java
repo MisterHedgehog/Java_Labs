@@ -1,4 +1,4 @@
-package com.laba10_11;
+package com.laba10.task1;
 
 interface Ship {
 

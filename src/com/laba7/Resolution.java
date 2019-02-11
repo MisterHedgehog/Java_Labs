@@ -31,6 +31,14 @@ class Resolution {
         return x * y;
     }
 
+    void changeX(double pers) {
+        x *= pers/100;
+    }
+
+    void changeY(double pers) {
+        y *= pers/100;
+    }
+
     void changeX(int count) {
         x += count;
     }

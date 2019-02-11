@@ -1,9 +1,15 @@
 package com.laba6;
 
+import java.time.LocalDate;
+import java.util.GregorianCalendar;
+
 class Date {
+
     static final int DAY = 0, MONTH = 1, YEAR = 2;
-    int day, month, year;
-    String format;
+
+
+    private int day, month, year;
+    private String format;
 
     Date(int day, int month, int year, String format) {
         this.day = day;
@@ -12,7 +18,11 @@ class Date {
         this.format = format;
     }
 
-    public Date() {
+    Date() {
+        LocalDate now = LocalDate.now();
+        day = now.getDayOfMonth();
+        month = now.getMonthValue();
+        year = now.getYear();
         this.format = "Y-M-D";
     }
 
@@ -36,5 +46,8 @@ class Date {
             case YEAR: return year;
         }
         return 0;
+    }
+    void setFormat(String format){
+        this.format = format;
     }
 }

@@ -1,5 +1,7 @@
 package com.laba7;
 
+import java.util.ArrayList;
+
 /**              Лабораторная работа №7
  * Вариант: 6
  * Тема:  «Разработка классов и использование их в программах»
@@ -18,5 +20,8 @@ package com.laba7;
 
 public class Main {
     public static void main(String[] something) {
+        Date now = new Date();
+        Resolution resolution = new Resolution();
+        VideoDevice device = new VideoDevice("Sony Max Function", 25, now, resolution, new ArrayList<>());
     }
 }

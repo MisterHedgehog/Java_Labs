@@ -1,15 +1,15 @@
-package com.laba8.task1;
+package com.laba8_.task1;
 
-public class Ball {
+public class Sphere {
     private double radius;
     private double weight;
 
-    Ball(double radius, double wight) {
+    Sphere(double radius, double wight) {
         this.radius = radius;
         this.weight = wight;
     }
 
-    Ball() {
+    Sphere() {
         this.radius = Double.NaN;
         this.weight = Double.NaN;
     }

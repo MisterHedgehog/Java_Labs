@@ -1,4 +1,4 @@
-package com.laba8.task2;
+package com.laba8_.task2;
 
 import java.util.Arrays;
 import java.util.TreeSet;

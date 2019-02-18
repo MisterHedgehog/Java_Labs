@@ -1,9 +1,12 @@
 package com.laba14;
 
 class Crypto {
-    static String code(String text){
+    static String code(String text) throws CryptoException{
         text = text.replaceAll("\\s+","");
         int textLength = text.length();
+        if(textLength == 0){
+            throw new CryptoException("Ошибка при шифровании: невозможно зашифровать пустую строку");
+        }
         double sqrt = Math.sqrt(textLength);
         int tableSize = (int) Math.ceil(sqrt);
         char[][] table = new char[tableSize][tableSize];
@@ -26,11 +29,13 @@ class Crypto {
         return stringBuilder.toString();
     }
 
-    static String decode(String text){
+    static String decode(String text) throws CryptoException, NullPointerException{
+        if(text == null)
+            throw new NullPointerException("Ошибка при расшифровки: строка содержит значение null");
         int textLength = text.length();
         int tableSize = (int) Math.sqrt(textLength);
         if (textLength != tableSize * tableSize)
-            throw new IllegalArgumentException("Ошибка при расшифровки: строку невозможно преобразовать в таблицу");
+            throw new CryptoException("Ошибка при расшифровки: строку невозможно преобразовать в таблицу");
         char[][] table = new char[tableSize][tableSize];
         for (int i = 0; i < tableSize; i++) {
             for (int j = tableSize - 1; j >= 0; j--) {
@@ -50,14 +55,14 @@ class Crypto {
     }
 
     /**
-     *
-     * @param table
-     * @param title
+     * Функция, выводящая двехмерный массив в консоль
+     * @param table массив для вывода
+     * @param title заголовок перед выводом
      */
     private static void showTable(char[][] table, String title){
         System.out.println(title);
         for (char[] chars : table) {
-            for (int j = 0; j < table.length; j++) {
+            for (int j = 0; j < chars.length; j++) {
                 System.out.print(chars[j] + " ");
             }
             System.out.println();

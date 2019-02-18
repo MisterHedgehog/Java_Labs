@@ -10,20 +10,14 @@ class VideoDevice {
     Resolution resolution;
     ArrayList<String> films;
 
-   VideoDevice(String model, double weight, Date invention, Resolution resolution, ArrayList<String> films) {
+    VideoDevice() { }
+
+    VideoDevice(String model, double weight, Date invention, Resolution resolution, ArrayList<String> films) {
         this.model = model;
         this.weight = weight;
         this.invention = invention;
         this.resolution = resolution;
         this.films = films;
-    }
-
-    VideoDevice() {
-        this.model = "не указано";
-        this.weight = Double.NaN;
-        this.films = new ArrayList<>();
-        this.resolution = new Resolution(1920,1080);
-        this.invention = new Date(0,0,0,"D.M.Y");
     }
 
     String getModel() {
@@ -32,6 +26,22 @@ class VideoDevice {
 
     void setModel(String model) {
         this.model = model;
+    }
+
+    boolean checkSpace(){
+       for(char c : model.toCharArray()){
+           if (c == ' '){
+               return false;
+           }
+       }
+       return model.isBlank();
+    }
+
+    double doSomethingWithWieght(){
+       double w = weight * 2;
+       w = Math.pow(w, 32);
+       w /= 30;
+       return w;
     }
 
     boolean hasFilm(String film){

@@ -50,9 +50,9 @@ class Crypto {
     }
 
     /**
-     *
-     * @param table
-     * @param title
+     * Функция, выводящая двехмерный массив в консоль
+     * @param table массив для вывода
+     * @param title заголовок перед выводом
      */
     private static void showTable(char[][] table, String title){
         System.out.println(title);

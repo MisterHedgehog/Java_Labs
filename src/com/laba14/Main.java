@@ -17,7 +17,19 @@ package com.laba14;
 
 public class Main {
     public static void main(String[] something) {
-        String regex = "[^\\pL]";
-        System.out.println("1234*fdss ?_32ASD dавы вв".replaceAll(regex,""));
+        String code = null, decode;
+        try {
+            code = Crypto.code("Простая таблица перестановки");
+            System.out.println("Зашифрованная строка: " + code);
+        } catch (CryptoException e){
+            System.out.println(e.getMessage());
+            System.exit(1);
+        }
+        try {
+            decode = Crypto.decode(code);
+            System.out.println("Разшифрованная строка: " + decode);
+        } catch (CryptoException | NullPointerException e){
+            System.err.println(e.getMessage());
+        }
     }
 }

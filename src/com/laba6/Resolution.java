@@ -1,18 +1,24 @@
 package com.laba6;
 
-enum Type { IPS, TN, OLED }
+enum Type { IPS(0), TN(1), OLED(2);
+    int index;
+    Type(int index){
+    this.index = index;
+    }
+}
 
-enum Kind { GLOSSY, MATT }
+enum Kind { GLOSSY(0), MATT(1);
+    int index;
+    Kind(int index){
+        this.index = index;
+    }}
 
 class Resolution {
     private int x, y;
     Type type;
     Kind kind;
 
-    Resolution() {
-        type = Type.TN;
-        kind = Kind.MATT;
-    }
+    Resolution() { }
 
     Resolution(int x, int y) {
         this();
@@ -27,16 +33,35 @@ class Resolution {
         this.kind = kind;
     }
 
-    int getPixelsCount(){
-        return x * y;
+    int pixelsCount(){
+        if(x > 0 && y > 0) {
+            return x * y;
+        }
+        else{
+            System.out.println("У матрицы отрицательное значение количества пикселей.");
+            x = 1920;
+            y = 1080;
+            return x * y;
+        }
     }
 
     void changeX(int count) {
+        if(count > 0)
         x += count;
     }
 
     void changeY(int count) {
+        if(count > 0)
         y += count;
+    }
+
+    String qaulity(){
+        switch (type){
+            case IPS: return "матрица качества IPS не самая лучшая";
+            case TN: return "матрица качества TN самая худшая";
+            case OLED: return "матрица качества OLED самая лучшая";
+        }
+        return "качество не определено";
     }
 
     @Override

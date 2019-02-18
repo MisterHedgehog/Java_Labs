@@ -1,4 +1,4 @@
-package com.laba8.task2;
+package com.laba8_.task2;
 
 abstract class SemipreciousStone extends Stone {
     SemipreciousStone(double transparency, double weight) {

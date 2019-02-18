@@ -1,6 +1,6 @@
-package com.laba8.task1;
+package com.laba8_.task1;
 
-abstract class SpaceObject extends Ball {
+abstract class SpaceObject extends Sphere {
 
     String name;
     private double velocity;

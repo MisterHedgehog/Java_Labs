@@ -11,6 +11,8 @@ class Date {
     private int day, month, year;
     private String format;
 
+    Date() { }
+
     Date(int day, int month, int year, String format) {
         this.day = day;
         this.month = month;
@@ -18,28 +20,38 @@ class Date {
         this.format = format;
     }
 
-    Date() {
-        LocalDate now = LocalDate.now();
-        day = now.getDayOfMonth();
-        month = now.getMonthValue();
-        year = now.getYear();
-        this.format = "Y-M-D";
+    void setFormat(String format){
+        for(char c : format.toCharArray()){
+            if (c == ' '){
+                return;
+            }
+        }
+        this.format = format;
     }
 
-    @Override
-    public String toString() {
-        return format.replace("Y", String.valueOf(year))
-                .replace("M", String.valueOf(month))
-                .replace("D", String.valueOf(day));
+    void remakeDate(){
+        if(day > 31 || day < 0){
+            day = 0;
+            System.out.println("Изменение значения поля day.");
+        }
+        if(month > 12 || month < 0){
+            month = 0;
+            System.out.println("Изменение значения поля month.");
+        }
+        if(year < 0){
+            year = 0;
+            System.out.println("Изменение значения поля year.");
+        }
     }
-    void set(int type, int value){
+
+    void changeDateByType(int type, int value){
         switch (type){
             case DAY: day = value; break;
             case MONTH: month = value; break;
             case YEAR: year = value; break;
         }
     }
-    int get(int type){
+    int dateByType(int type){
         switch (type){
             case DAY: return day;
             case MONTH: return month;
@@ -47,7 +59,11 @@ class Date {
         }
         return 0;
     }
-    void setFormat(String format){
-        this.format = format;
+
+    @Override
+    public String toString() {
+        return format.replace("Y", String.valueOf(year))
+                .replace("M", String.valueOf(month))
+                .replace("D", String.valueOf(day));
     }
 }

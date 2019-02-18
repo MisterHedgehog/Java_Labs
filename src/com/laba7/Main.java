@@ -23,5 +23,6 @@ public class Main {
         Date now = new Date();
         Resolution resolution = new Resolution();
         VideoDevice device = new VideoDevice("Sony Max Function", 25, now, resolution, new ArrayList<>());
+        resolution.changeX(32, 43, 34);
     }
 }

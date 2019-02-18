@@ -10,28 +10,14 @@ class VideoDevice {
     Resolution resolution;
     ArrayList<String> films;
 
+    VideoDevice() { }
+
     VideoDevice(String model, double weight, Date invention, Resolution resolution, ArrayList<String> films) {
         this.model = model;
         this.weight = weight;
         this.invention = invention;
         this.resolution = resolution;
         this.films = films;
-    }
-
-    VideoDevice() {
-        this.model = "не указано";
-        this.weight = Double.NaN;
-        this.films = new ArrayList<>();
-        this.resolution = new Resolution(1920,1080);
-        this.invention = new Date(0,0,0,"D.M.Y");
-    }
-
-    void addWeight(){
-       weight++;
-    }
-
-    void addWeight(int value) {
-        weight += value;
     }
 
     String getModel() {
@@ -46,11 +32,35 @@ class VideoDevice {
         model = String.valueOf(chars);
     }
 
+    boolean checkSpace(){
+        for(char c : model.toCharArray()){
+            if (c == ' '){
+                return false;
+            }
+        }
+        return model.isBlank();
+    }
+
+    double doSomethingWithWieght(){
+        double w = weight * 2;
+        w = Math.pow(w, 32);
+        w /= 30;
+        return w;
+    }
+
+    void addWeight(){
+       weight++;
+    }
+
+    void addWeight(int value) {
+        weight += value;
+    }
+
     boolean hasFilm(String film){
        return films.contains(film);
     }
 
-    boolean hasFilms(String... films){
+    boolean hasFilm(String... films){
         for (int i = 0; i < films.length; i++) {
             if(this.films.contains(films[0]))
                 return true;
@@ -58,8 +68,12 @@ class VideoDevice {
         return false;
     }
 
-    void addAllFilms(String... films){
+    void addFilm(String... films){
        this.films.addAll(Arrays.asList(films));
+    }
+
+    void addFilm(String film){
+        this.films.add(film);
     }
 
     // Функция, выводящая все фильмы
